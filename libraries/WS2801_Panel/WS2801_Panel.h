@@ -1,9 +1,8 @@
-#if (ARDUINO >= 100)
- #include <Arduino.h>
-#else
- #include <WProgram.h>
- #include <pins_arduino.h>
-#endif
+#ifndef WS2801_Panel_h
+#define WS2801_Panel_h
+
+#include <Arduino.h>
+#include <Adafruit_WS2801.h>
 
 class WS2801_Panel {
   public:
@@ -23,3 +22,6 @@ class WS2801_Panel {
     Adafruit_WS2801 container;
     uint16_t start, end;
 };
+
+#endif
+

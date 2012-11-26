@@ -1,4 +1,4 @@
-arduino
+Chico++ Arduino Projects
 =======
 
 
