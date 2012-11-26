@@ -1,6 +1,6 @@
 #include <SPI.h>
-#include <Adafruit_WS2801.h>
-#include <WS2801_Panel.h>
+#include "Adafruit_WS2801.h"
+#include "WS2801_Panel.h"
 
 // We start with strands of 12mm Adafruit WS2801 LED Pixels:
 // https://www.adafruit.com/products/322

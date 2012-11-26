@@ -1,4 +1,4 @@
-#include <WS2801_Panel.h>
+#include "WS2801_Panel.h"
 
 WS2801_Panel::WS2801_Panel(Adafruit_WS2801 strip, uint16_t start_index, uint16_t end_index) {
   container = strip;

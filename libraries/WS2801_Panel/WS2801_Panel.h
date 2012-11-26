@@ -2,7 +2,7 @@
 #define WS2801_Panel_h
 
 #include <Arduino.h>
-#include <Adafruit_WS2801.h>
+#include "Adafruit_WS2801.h"
 
 class WS2801_Panel {
   public:
