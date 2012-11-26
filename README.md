@@ -10,7 +10,7 @@ on ceiling tiles. For more information on basic wiring and led function, see the
 
 We're using the [Arduino Uno](http://www.arduino.cc/en/Main/arduinoBoardUno) to drive the array.
 
-### WS2801__Panel
+### WS2801\_Panel
 
-WS2801__Panel is a simple library to work with subsets of the strand.
+WS2801\_Panel is a simple library to work with subsets of the strand.
 
