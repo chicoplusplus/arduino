@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map For DmxSimple
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+CBLIP_LEDS_SPI	KEYWORD1
+BLIP_LEDS_SPI_WS2801	KEYWORD1
+BL	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+setLeds	KEYWORD2
+setPixel	KEYWORD2
+show	KEYWORD2
+setRGBData KEYWORD2
+getRGBData KEYWORD2
+setDirty KEYWORD2
+show KEYWORD2
+color KEYWORD2
+getCounter KEYWORD2
+Translate	KEYWORD2
+Wheel	KEYWORD2
+gridHeight	KEYWORD2
+gridWidth	KEYWORD2
+
+  
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+NUM_LEDS	LITERAL1
+SPI_LPD6803	LITERAL1
+CBLIP_LEDS_SPI::SPI_LPD6803 LITERAL1
+
