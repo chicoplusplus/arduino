@@ -10,7 +10,8 @@ on ceiling tiles. For more information on basic wiring and led function, see the
 
 We're using the [Arduino Uno](http://www.arduino.cc/en/Main/arduinoBoardUno) to drive the array.
 
-### WS2801\_Panel
+### Requirements
 
-WS2801\_Panel is a simple library to work with subsets of the strand.
+- You'll need to install [Andy Brown's port of the C++ std library](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/).
+
 
