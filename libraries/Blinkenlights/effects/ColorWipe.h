@@ -7,14 +7,14 @@
 
 class ColorWipe : public Effect {
   public:
-    ColorWipe(Selection *s, uint32_t color, uint32_t wait);
+    ColorWipe(Selection *s, uint32_t frequency, uint32_t color);
 
-    virtual void next_step(); // called every 1ms
-    virtual void print();
-
+    // Called every 1ms (best effort). Render next step and return
+    // false if we're totally done.
+    virtual bool step();
+    
   private:
-    uint32_t color, 
-             wait;
+    uint32_t color;
     uint16_t current_pixel;
 };
 

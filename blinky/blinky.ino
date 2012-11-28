@@ -42,6 +42,10 @@ void setup() {
   // Wipe cycle
   WipeCycle *horizontal_wipe = new WipeCycle(grid->select(4,0,4,2), 250);
   controller->register_effect(horizontal_wipe);
+
+  // Color wipe
+  //ColorWipe *color_wipe = new ColorWipe(grid->select(4,0,4,2), 250, Effect::color(168,21,0));
+  //controller->register_effect(color_wipe);
   
   // Rainbow cycle
   RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(8,0,4,2), 20);
@@ -59,7 +63,7 @@ void loop() {
   unsigned long current_time = millis();
   if (current_time - last_execution >= 1) {
     last_execution = current_time;
-    controller->do_something();
+    controller->render();
   }
 }
 

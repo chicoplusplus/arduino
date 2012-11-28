@@ -55,7 +55,7 @@ class Controller {
 
     void register_effect(Effect *e);
     void deregister_effect(Effect *e);
-    void do_something();
+    void render();
     void print();
 
   private:

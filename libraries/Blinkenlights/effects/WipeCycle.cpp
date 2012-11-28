@@ -2,21 +2,14 @@
 
 #include "Pixel.h"
 
-WipeCycle::WipeCycle(Selection *selection, uint32_t wait, bool horizontal_wipe) : Effect(selection) {
-  this->wait = wait;
+WipeCycle::WipeCycle(Selection *selection, uint32_t frequency, bool horizontal_wipe) : Effect(selection, frequency) {
   this->horizontal_wipe = horizontal_wipe;
   this->current_column = 0;
   this->current_color = 0;
   this->reverse = false;
 }
 
-void WipeCycle::next_step() {
-  // Check if enough time has passed
-  unsigned long current_time = millis();
-  if (current_time - this->last_execution < this->wait) {
-    return;
-  }
-
+bool WipeCycle::step() {
   // Do our thing
   int i, num_pixels;
   uint32_t wheel_color;
@@ -39,24 +32,25 @@ void WipeCycle::next_step() {
       reversed = true;
     }
 
-    // Get the column and update color
+    // Get the column
     line = this->selection->get_column(this->current_column);
-  } else {
+  }
+  else {
     // Check for reversal conditions
     if (!this->reverse && this->current_column >= this->selection->height() - 1) {
-      // Switch to right to left
+      // Switch to bottom to top
       this->current_column = this->selection->height() - 1;
       this->reverse = true;
       reversed = true;
     } 
     else if (this->reverse && this->current_column <= 0) {
-      // Switch back to left to right
+      // Switch back to top to bottom
       this->current_column = 0;
       this->reverse = false;
       reversed = true;
     }
 
-    // Get the column and update color
+    // Get the row
     line = this->selection->get_row(this->current_column);
   }
 
@@ -78,5 +72,7 @@ void WipeCycle::next_step() {
 
   // Update state
   this->current_column = this->reverse ? this->current_column - 1 : this->current_column + 1;
-  this->last_execution = current_time;
+
+  // Go on forever
+  return true;
 }

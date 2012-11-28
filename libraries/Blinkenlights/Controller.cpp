@@ -11,11 +11,19 @@ Controller::Controller(Adafruit_WS2801 *strip) {
 
 Controller::~Controller() {}
 
-void Controller::do_something() {
-  // Ask effects to do their thing
+void Controller::render() {
+  // Iterate through list of effects
   std::vector<Effect*>::iterator iter;
-  for(iter = this->effects.begin(); iter != this->effects.end(); iter++) {
-    (*iter)->next_step();
+  for(iter = this->effects.begin(); iter != this->effects.end(); ) {
+    // Ask effect to render
+    if ( (*iter)->render() ) {
+      // Move on to next effect
+      iter++;
+    }
+    else {
+      // Effect is complete
+      this->effects.erase(iter);
+    }
   }
 
   // Write to strip

@@ -8,12 +8,12 @@
 
 class RainbowCycle : public Effect {
   public:
-    RainbowCycle(Selection *s, uint32_t wait);
+    RainbowCycle(Selection *s, uint32_t frequency);
 
-    virtual void next_step(); // called every 1ms
-    virtual void print();
+    // Called every 1ms (best effort). Render next step and return
+    // false if we're totally done.
+    virtual bool step();
 
   private:
     uint8_t current_color;
-    uint32_t wait;
 };

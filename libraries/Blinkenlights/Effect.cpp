@@ -1,13 +1,31 @@
 #include "Effect.h"
 #include "Selection.h"
 
-Effect::Effect(Selection *selection) {
+Effect::Effect(Selection *selection, uint32_t frequency) {
   this->selection = selection;
+  this->frequency = frequency;
   this->last_execution = 0;
 }
 
 Effect::~Effect() {
   delete this->selection;
+}
+
+// Called by controller every 1ms (best effort)
+// Return false if we want to stop rendering and
+// be deregistered.
+bool Effect::render() {
+  // Check if enough time has passed
+  unsigned long current_time = millis();
+  if (current_time - this->last_execution < this->frequency) {
+    return true;
+  }
+
+  // Update state
+  this->last_execution = current_time;
+
+  // Call subclass implementation
+  return this->step();
 }
 
 /* Helper functions */
