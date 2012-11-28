@@ -1,5 +1,5 @@
-#include "ColorWipe.h"
-#include "Selection.h"
+// This file is included from Effect.cpp
+
 #include "Pixel.h"
 
 ColorWipe::ColorWipe(Selection *selection, uint32_t color, uint32_t wait) : Effect(selection) {

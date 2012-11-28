@@ -1,8 +1,4 @@
-#ifndef Blinkenlights_Rainbow_h
-#define Blinkenlights_Rainbow_h
-
-#include <Arduino.h>
-#include "Effect.h"
+// This file is included from Effect.h
 
 /*
  * The rainbow effect updates all pixels in the selection
@@ -10,9 +6,6 @@
  * the entire rainbow.
  *
  */
-
-// Defined elsewhere
-class Selection;
 
 class Rainbow : public Effect {
   public:
@@ -25,6 +18,3 @@ class Rainbow : public Effect {
     uint8_t current_color;
     uint32_t wait;
 };
-
-#endif
-

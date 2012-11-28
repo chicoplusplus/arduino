@@ -25,5 +25,12 @@ class Effect {
     uint32_t last_execution;
 };
 
+// Include effects here. The arduino build system doesn't allow subdirectories
+// but we want to organize our effects into a subdirectory to avoid overwhelming
+// the library with them.
+#include "effects/ColorWipe.h"
+#include "effects/Rainbow.h"
+#include "effects/RainbowCycle.h"
+
 #endif
 

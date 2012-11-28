@@ -38,3 +38,11 @@ uint32_t Effect::wheel(byte position)
     return Effect::color(0, position * 3, 255 - position * 3);
   }
 }
+
+// Include effects here. The arduino build system doesn't allow subdirectories
+// but we want to organize our effects into a subdirectory to avoid overwhelming
+// the library with them.
+#include "effects/ColorWipe.cpp"
+#include "effects/Rainbow.cpp"
+#include "effects/RainbowCycle.cpp"
+

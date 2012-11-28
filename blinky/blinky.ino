@@ -4,8 +4,7 @@
 #include "Adafruit_WS2801.h"
 #include "Controller.h"
 #include "Grid.h"
-#include "Rainbow.h"
-#include "ColorWipe.h"
+#include "Effect.h"
 
 // Arduino output pins
 int dataPin  = 2; // White wire on Adafruit Pixels
@@ -36,13 +35,17 @@ void setup() {
   // Setup serial interface for debugging
   Serial.begin(9600);
 
-  // Instantiate rainbow effect and register it
-  Rainbow *rainbow_effect = new Rainbow(grid->select(0,0,2,2), 20);
+  // Rainbow
+  Rainbow *rainbow_effect = new Rainbow(grid->select(0,0,4,2), 20);
   controller->register_effect(rainbow_effect);
   
-  // Instantiate colorwipe effect and register it
+  // Color wipe
   ColorWipe *color_wipe_effect = new ColorWipe(grid->select(4,0,4,2), Effect::color(204,51,51), 100);
   controller->register_effect(color_wipe_effect);
+  
+  // Rainbow cycle
+  RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(8,0,4,2), 50);
+  controller->register_effect(rainbow_cycle_effect);
 
   // Debug:
   //controller->print();
@@ -58,8 +61,5 @@ void loop() {
     last_execution = current_time;
     controller->do_something();
   }
-
-  //panel1.colorWipe(panel1.Color(255, 0, 0), 50);
-  //panel3.rainbowCycle(20);
 }
 

@@ -1,16 +1,9 @@
-#ifndef Blinkenlights_ColorWipe_h
-#define Blinkenlights_ColorWipe_h
-
-#include <Arduino.h>
-#include "Effect.h"
+// This file is included from Effect.h
 
 /*
  * The color wipe effect changes each pixel in turn
  * to the given color.
  */
-
-// Defined elsewhere
-class Selection;
 
 class ColorWipe : public Effect {
   public:
@@ -24,6 +17,4 @@ class ColorWipe : public Effect {
              wait;
     uint16_t current_pixel;
 };
-
-#endif
 
