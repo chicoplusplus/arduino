@@ -12,6 +12,7 @@ We're using the [Arduino Uno](http://www.arduino.cc/en/Main/arduinoBoardUno) to 
 
 ### Requirements
 
+- Start with a fresh installation of the Arduino distribution. There's no need to install libraries in the main Arduino java library location. Instead,
+  clone this repo and go into the IDE and set your "Sketchbook location" to it. It will load the libraries subdirectory automatically.
 - You'll need to install [Andy Brown's port of the C++ std library](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/).
-
 

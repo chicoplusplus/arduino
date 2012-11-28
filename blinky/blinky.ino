@@ -44,7 +44,7 @@ void setup() {
   controller->register_effect(color_wipe_effect);
   
   // Rainbow cycle
-  RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(8,0,4,2), 50);
+  RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(8,0,4,2), 20);
   controller->register_effect(rainbow_cycle_effect);
 
   // Debug:
