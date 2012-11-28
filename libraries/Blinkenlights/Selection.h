@@ -14,12 +14,17 @@ class Selection {
     Selection(uint8_t w, uint8_t h);
     ~Selection();
     
-    Pixel *get(uint16_t index);
-    Pixel *get(uint8_t x, uint8_t y);
-    void set(uint8_t x, uint8_t y, Pixel *pixel);
-
     uint8_t width() { return w; }
     uint8_t height() { return h; }
+    uint16_t size() { return w*h; }
+
+    Pixel *get(uint16_t index);
+    Pixel *get(uint8_t x, uint8_t y);
+    Selection* get_column(uint8_t x);
+    Selection* get_row(uint8_t y);
+
+    void set(uint8_t x, uint8_t y, Pixel *pixel);
+
     void print();
 
   private:

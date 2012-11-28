@@ -23,6 +23,7 @@ void Selection::set(uint8_t x, uint8_t y, Pixel *pixel) {
   this->pixels[(y * this->w) + x] = pixel;
 }
 
+// Get a pixel by coordinate
 Pixel* Selection::get(uint8_t x, uint8_t y) {
   if (x >= this->w || y >= this->h) {
     return NULL;
@@ -31,12 +32,39 @@ Pixel* Selection::get(uint8_t x, uint8_t y) {
   return this->pixels[(y * this->w) + x];
 }
 
+// Get an individual pixel by index. Useful for iterating over the entire list.
 Pixel* Selection::get(uint16_t index) {
   if (index >= this->w * this->h) {
     return NULL;
   }
 
   return this->pixels[index];
+}
+
+// Return a new selection containing just one row. Note that you
+// are expected to delete return value when you're done with it.
+Selection* Selection::get_row(uint8_t y) {
+  Selection *row = new Selection(this->w, 1);
+  
+  int i;
+  for (i = 0; i < this->w; i++) {
+    row->set(i, 0, this->get(i, y));
+  }
+
+  return row;
+}
+
+// Return a new selection containing just one column. Note that you
+// are expected to delete return value when you're done with it.
+Selection* Selection::get_column(uint8_t x) {
+  Selection *col = new Selection(1, this->h);
+  
+  int i;
+  for (i = 0; i < this->h; i++) {
+    col->set(0, i, this->get(x, i));
+  }
+
+  return col;
 }
 
 // Print to serial for debugging

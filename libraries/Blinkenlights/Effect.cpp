@@ -45,4 +45,5 @@ uint32_t Effect::wheel(byte position)
 #include "effects/ColorWipe.cpp"
 #include "effects/Rainbow.cpp"
 #include "effects/RainbowCycle.cpp"
+#include "effects/WipeCycle.cpp"
 

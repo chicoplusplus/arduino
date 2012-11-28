@@ -39,9 +39,9 @@ void setup() {
   Rainbow *rainbow_effect = new Rainbow(grid->select(0,0,4,2), 20);
   controller->register_effect(rainbow_effect);
   
-  // Color wipe
-  ColorWipe *color_wipe_effect = new ColorWipe(grid->select(4,0,4,2), Effect::color(204,51,51), 100);
-  controller->register_effect(color_wipe_effect);
+  // Wipe cycle
+  WipeCycle *horizontal_wipe = new WipeCycle(grid->select(4,0,4,2), 250);
+  controller->register_effect(horizontal_wipe);
   
   // Rainbow cycle
   RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(8,0,4,2), 20);

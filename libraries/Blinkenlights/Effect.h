@@ -31,6 +31,7 @@ class Effect {
 #include "effects/ColorWipe.h"
 #include "effects/Rainbow.h"
 #include "effects/RainbowCycle.h"
+#include "effects/WipeCycle.h"
 
 #endif
 
