@@ -16,23 +16,27 @@ Selection::~Selection() {
 
 // Set the pixel (in coordinate system of the selection)
 void Selection::set(uint8_t x, uint8_t y, Pixel *pixel) {
-  this->pixels[(x * this->w) + y] = pixel;
+  if (x >= this->w || y >= this->h) {
+    return;
+  }
+
+  this->pixels[(y * this->w) + x] = pixel;
 }
 
 Pixel* Selection::get(uint8_t x, uint8_t y) {
-  return this->pixels[(x * this->w) + y];
+  if (x >= this->w || y >= this->h) {
+    return NULL;
+  }
+
+  return this->pixels[(y * this->w) + x];
 }
 
 Pixel* Selection::get(uint16_t index) {
+  if (index >= this->w * this->h) {
+    return NULL;
+  }
+
   return this->pixels[index];
-}
-
-uint8_t Selection::width() {
-  return this->w;
-}
-
-uint8_t Selection::height() {
-  return this->h;
 }
 
 // Print to serial for debugging

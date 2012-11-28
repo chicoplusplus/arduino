@@ -8,7 +8,7 @@ class Selection;
 
 class Effect {
   public:
-    Effect(Selection *s);
+    Effect(Selection *s); // Effect owns selection once constructed and will deallocate it when no longer needed
     ~Effect();
 
     // Implemented by subclasses 
@@ -16,7 +16,7 @@ class Effect {
     virtual void print() {}
   
     // Helper functions
-    uint32_t 
+    static uint32_t 
       color(byte r, byte g, byte b),
       wheel(byte position);
 

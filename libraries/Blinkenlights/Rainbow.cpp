@@ -17,13 +17,13 @@ void Rainbow::next_step() {
   // Do our thing
   int i, num_pixels;
   num_pixels = this->selection->width() * this->selection->height();
-
-  for (i = 0; i <= num_pixels; i++) {
-    this->selection->get(i)->set_pixel_color(this->wheel((i + this->current_color) % 255));
+  for (i = 0; i < num_pixels; i++) {
+    this->selection->get(i)->set_pixel_color(Effect::wheel((i + this->current_color) % 256));
   }  
 
   // Update state
   this->current_color++;
+  this->current_color = this->current_color % 256;
   this->last_execution = current_time;
 }
 

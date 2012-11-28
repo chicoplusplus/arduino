@@ -29,12 +29,12 @@ uint32_t Effect::color(byte r, byte g, byte b)
 uint32_t Effect::wheel(byte position)
 {
   if (position < 85) {
-    return color(position * 3, 255 - position * 3, 0);
+    return Effect::color(position * 3, 255 - position * 3, 0);
   } else if (position < 170) {
     position -= 85;
-    return color(255 - position * 3, 0, position * 3);
+    return Effect::color(255 - position * 3, 0, position * 3);
   } else {
     position -= 170; 
-    return color(0, position * 3, 255 - position * 3);
+    return Effect::color(0, position * 3, 255 - position * 3);
   }
 }

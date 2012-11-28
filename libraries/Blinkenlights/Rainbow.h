@@ -4,6 +4,13 @@
 #include <Arduino.h>
 #include "Effect.h"
 
+/*
+ * The rainbow effect updates all pixels in the selection
+ * through a continuously rotating set of colors, spanning
+ * the entire rainbow.
+ *
+ */
+
 // Defined elsewhere
 class Selection;
 
