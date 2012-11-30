@@ -18,12 +18,6 @@ Grid::Grid(Adafruit_WS2801 *strip, uint8_t num_panels_x, uint8_t num_panels_y, u
 
   // Instantiate pixels. Loop through in logical order, and then
   // calculate the strand index.
-  //
-  // TODO: Right now I am encoding this based on the wiring of the 
-  // prototype board. This will need to change to reflect the
-  // final layout and wiring. The only thing that should need to
-  // change is the calculation of strand_index below.
-  //
   int i, j, k, l, strand_index, current_x, current_y;
   strand_index = current_x = current_y = 0;
   for (i = 0; i < this->num_panels_x; i++) {
@@ -35,10 +29,8 @@ Grid::Grid(Adafruit_WS2801 *strip, uint8_t num_panels_x, uint8_t num_panels_y, u
           current_y = (j * this->num_pixels_per_panel_y) + l;
           
           // Figure out where we are in the strand.
-          // 
-          // The wiring for the prototype board is three panels of eight, where the wiring goes
-          // from top to bottom, then left to right, repeating.
-          strand_index = (current_x * num_pixels_y) + current_y;
+          strand_index = (current_y * num_pixels_x);
+          strand_index += (current_y % 2 == 1) ? current_x : (this->num_pixels_per_panel_x - current_x - 1);
 
           // Instantiate the pixel
           this->pixels[(num_pixels_x * current_y) + current_x] = new Pixel(strip, strand_index, num_leds_per_pixel);
