@@ -14,7 +14,9 @@ Grid::Grid(Adafruit_WS2801 *strip, uint8_t num_panels_x, uint8_t num_panels_y, u
   // Allocate space for pixel pointers.
   uint32_t num_pixels_x = num_panels_x * num_pixels_per_panel_x;
   uint32_t num_pixels_y = num_panels_y * num_pixels_per_panel_y;
-  this->pixels = (Pixel**) malloc(sizeof(Pixel*) * num_pixels_x * num_pixels_y);
+  uint32_t size_of_pixels = sizeof(Pixel*) * num_pixels_x * num_pixels_y;
+  this->pixels = (Pixel**) malloc(size_of_pixels);
+  memset(this->pixels, NULL, size_of_pixels);
 
   // Instantiate pixels. Loop through in logical order, and then
   // calculate the strand index.
@@ -27,10 +29,10 @@ Grid::Grid(Adafruit_WS2801 *strip, uint8_t num_panels_x, uint8_t num_panels_y, u
           // Figure out where we are in the logical grid.
           current_x = (i * this->num_pixels_per_panel_x) + k;
           current_y = (j * this->num_pixels_per_panel_y) + l;
-          
+
           // Figure out where we are in the strand.
-          strand_index = (current_y * num_pixels_x);
-          strand_index += (current_y % 2 == 1) ? current_x : (this->num_pixels_per_panel_x - current_x - 1);
+          strand_index = (current_x * num_pixels_y);
+          strand_index += (current_x % 2 == 0) ? current_y : (this->num_pixels_per_panel_y - current_y - 1);
 
           // Instantiate the pixel
           this->pixels[(num_pixels_x * current_y) + current_x] = new Pixel(strip, strand_index, num_leds_per_pixel);
