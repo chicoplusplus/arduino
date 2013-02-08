@@ -169,4 +169,5 @@ void Effect::print_color(uint32_t color) {
 #include "effects/RainbowCycle.cpp"
 #include "effects/WipeCycle.cpp"
 #include "effects/Pulse.cpp"
+//#include "effects/Sparkle.cpp"
 

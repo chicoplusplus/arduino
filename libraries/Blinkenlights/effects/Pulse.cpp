@@ -28,11 +28,7 @@ bool Pulse::step() {
   uint32_t new_color = Effect::hsv_to_rgb(this->hue, this->saturation, this->current_brightness);
 
   // Set pixels
-  int i, num_pixels;
-  num_pixels = this->selection->size();
-  for (i = 0; i < num_pixels; i++) {
-    this->selection->get(i)->set_pixel_color(new_color);
-  } 
+  this->selection->set_pixel_color(new_color);
 
   // Keep going forever
   return true;

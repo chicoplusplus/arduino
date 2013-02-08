@@ -57,6 +57,10 @@ void setup() {
   Pulse *pulse_effect = new Pulse(grid->select(0,0,12,12), 20, Effect::color(128,0,0));
   controller->register_effect(pulse_effect);
 
+  // Sparkle
+  //Sparkle *sparkle_effect = new Sparkle(grid->select(0,0,8,9), 20, Effect::color(128,0,0), 20, Effect::color(5,5,5));
+  //controller->register_effect(sparkle_effect);
+
   // Debug:
   //controller->print();
   //grid->print();

@@ -49,6 +49,7 @@ class Effect {
 #include "effects/RainbowCycle.h"
 #include "effects/WipeCycle.h"
 #include "effects/Pulse.h"
+//#include "effects/Sparkle.h"
 
 #endif
 

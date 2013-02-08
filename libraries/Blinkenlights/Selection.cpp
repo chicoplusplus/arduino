@@ -1,5 +1,6 @@
 #include "Selection.h"
 #include "Pixel.h"
+#include "Effect.h"
 
 Selection::Selection(uint8_t w, uint8_t h) {
   this->pixels = (Pixel**) malloc(sizeof(Pixel*) * w * h);
@@ -66,6 +67,19 @@ Selection* Selection::get_column(uint8_t x) {
 
   return col;
 }
+
+void Selection::set_pixel_color(uint8_t r, uint8_t g, uint8_t b) {
+  this->set_pixel_color(Effect::color(r,g,b));
+}
+
+void Selection::set_pixel_color(uint32_t c) {
+  int i, num_pixels;
+  num_pixels = this->size();
+  for (i = 0; i < num_pixels; i++) {
+    this->get(i)->set_pixel_color(c);
+  } 
+}
+
 
 // Print to serial for debugging
 void Selection::print() {

@@ -25,6 +25,9 @@ class Selection {
 
     void set(uint8_t x, uint8_t y, Pixel *pixel);
 
+    void set_pixel_color(uint8_t r, uint8_t g, uint8_t b);
+    void set_pixel_color(uint32_t c);
+
     void print();
 
   private:
