@@ -1,7 +1,6 @@
 // This file is included from Effect.cpp
 
 #include "Pixel.h"
-#include <TrueRandom.h>
 
 Sparkle::Sparkle(Selection *selection, uint32_t frequency, uint32_t color, uint8_t density, uint32_t bg) : Effect(selection, frequency) {
   this->color = color;

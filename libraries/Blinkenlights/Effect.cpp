@@ -1,5 +1,6 @@
 #include "Effect.h"
 #include "Selection.h"
+#include "../TrueRandom/TrueRandom.h"
 
 Effect::Effect(Selection *selection, uint32_t frequency) {
   this->selection = selection;
@@ -169,5 +170,5 @@ void Effect::print_color(uint32_t color) {
 #include "effects/RainbowCycle.cpp"
 #include "effects/WipeCycle.cpp"
 #include "effects/Pulse.cpp"
-//#include "effects/Sparkle.cpp"
+#include "effects/Sparkle.cpp"
 
