@@ -28,7 +28,12 @@ class Effect {
     // Helper functions
     static uint32_t 
       color(byte r, byte g, byte b),
+      hsv_to_rgb(float h, float s, float v),
       wheel(byte position);
+    static void 
+      rgb_to_hsv(uint32_t color, float *h, float *s, float *v);
+
+    static void print_color(uint32_t color);
 
   protected:
     uint32_t frequency; // how often to move to the next step (in ms)
@@ -43,6 +48,7 @@ class Effect {
 #include "effects/Rainbow.h"
 #include "effects/RainbowCycle.h"
 #include "effects/WipeCycle.h"
+#include "effects/Pulse.h"
 
 #endif
 

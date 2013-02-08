@@ -44,7 +44,7 @@ Grid::Grid(Adafruit_WS2801 *strip, uint8_t num_panels_x, uint8_t num_panels_y, u
 
 Grid::~Grid() {
   int i, num_pixels;
-  num_pixels = num_panels_x * num_pixels_per_panel_x * num_panels_y * num_pixels_per_panel_y;
+  num_pixels = this->num_panels_x * this->num_pixels_per_panel_x * this->num_panels_y * this->num_pixels_per_panel_y;
   for (i = 0; i < num_pixels; i++) {
     delete this->pixels[i];
   }
@@ -53,8 +53,8 @@ Grid::~Grid() {
 }
 
 Pixel* Grid::get_pixel(uint16_t x, uint16_t y) {
-  uint32_t num_pixels_x = num_panels_x * num_pixels_per_panel_x;
-  uint32_t num_pixels_y = num_panels_y * num_pixels_per_panel_y;
+  uint32_t num_pixels_x = this->num_panels_x * this->num_pixels_per_panel_x;
+  uint32_t num_pixels_y = this->num_panels_y * this->num_pixels_per_panel_y;
   if (x >= num_pixels_x || y >= num_pixels_y) {
     return NULL;
   }
@@ -93,6 +93,7 @@ void Grid::print() {
   Serial.print(this->num_pixels_per_panel_y, DEC);
   Serial.print(", num_leds_per_pixel = ");
   Serial.println(this->num_leds_per_pixel, DEC);
+  Serial.flush();
  
   int i, num_pixels;
   num_pixels = this->num_panels_x * this->num_pixels_per_panel_x * this->num_panels_y * this->num_pixels_per_panel_y;

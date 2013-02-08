@@ -33,4 +33,5 @@ void Pixel::print() {
   Serial.print(grid_index, DEC);
   Serial.print(", num_leds = ");
   Serial.println(num_leds, DEC);
+  Serial.flush();
 }

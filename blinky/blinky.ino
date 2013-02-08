@@ -7,32 +7,34 @@
 #include "Effect.h"
 
 // Arduino output pins
+// Don't forget to connect the blue ground wire to Arduino ground,
+// and the red +5V wire to vim or +5V
 int dataPin  = 2; // White wire on Adafruit Pixels
 int clockPin = 3; // Green wire on Adafruit Pixels
 
-// Don't forget to connect the blue ground wire to Arduino ground,
-// and the red +5V wire to vim or +5V
-
-// Set the first variable to the total number of LEDs.
-Adafruit_WS2801 *strip = new Adafruit_WS2801(144, dataPin, clockPin);
-
-// Optional: leave off pin numbers to use hardware SPI
-// (pinout is then specific to each board and can't be changed)
-//Adafruit_WS2801 strip = Adafruit_WS2801(24);
-
-// Assign strip to controller
-Controller *controller = new Controller(strip);
+// Globals
+Controller *controller;
 
 void setup() {
   // Setup serial interface for debugging
   Serial.begin(9600);
 
-  // Instantiate our grid with information about layout
-  int num_panels_x = 12;
+  // Information about grid layout
+  int num_panels_x = 8;
   int num_panels_y = 1;
   int num_pixels_per_panel_x = 1;
-  int num_pixels_per_panel_y = 12;
+  int num_pixels_per_panel_y = 9;
   int num_leds_per_pixel = 1;
+  int num_total_leds = num_panels_x * num_panels_y * num_pixels_per_panel_x * num_pixels_per_panel_y * num_leds_per_pixel;
+
+  // Setup the strip, controller, and grid
+  // Optional: leave off pin numbers to use hardware SPI (pinout is then specific to each board and can't be changed)
+  Adafruit_WS2801 *strip = new Adafruit_WS2801(num_total_leds, dataPin, clockPin);
+
+  // Instantiate controller
+  controller = new Controller(strip);
+
+  // Instantiate grid
   Grid *grid = new Grid(strip, num_panels_x, num_panels_y, num_pixels_per_panel_x, num_pixels_per_panel_y, num_leds_per_pixel);
 
   // Rainbow
@@ -40,16 +42,20 @@ void setup() {
   //controller->register_effect(rainbow_effect);
   
   // Wipe cycle
-  WipeCycle *horizontal_wipe = new WipeCycle(grid->select(0,0,12,12), 250);
-  controller->register_effect(horizontal_wipe);
+  //WipeCycle *horizontal_wipe = new WipeCycle(grid->select(0,0,8,9), 250);
+  //controller->register_effect(horizontal_wipe);
 
   // Color wipe
-  //ColorWipe *color_wipe = new ColorWipe(grid->select(0,2,3,2), 250, Effect::color(168,21,0));
+  //ColorWipe *color_wipe = new ColorWipe(grid->select(0,0,8,9), 250, Effect::color(1,0,0));
   //controller->register_effect(color_wipe);
   
   // Rainbow cycle
   //RainbowCycle *rainbow_cycle_effect = new RainbowCycle(grid->select(0,0,12,12), 20);
   //controller->register_effect(rainbow_cycle_effect);
+
+  // Pulse
+  Pulse *pulse_effect = new Pulse(grid->select(0,0,8,9), 20, Effect::color(255,255,0));
+  controller->register_effect(pulse_effect);
 
   // Debug:
   //controller->print();
