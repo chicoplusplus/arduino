@@ -20,10 +20,10 @@ void setup() {
   Serial.begin(9600);
 
   // Information about grid layout
-  int num_panels_x = 8;
+  int num_panels_x = 12; //8;
   int num_panels_y = 1;
   int num_pixels_per_panel_x = 1;
-  int num_pixels_per_panel_y = 9;
+  int num_pixels_per_panel_y = 12; //9;
   int num_leds_per_pixel = 1;
   int num_total_leds = num_panels_x * num_panels_y * num_pixels_per_panel_x * num_pixels_per_panel_y * num_leds_per_pixel;
 
@@ -54,7 +54,7 @@ void setup() {
   //controller->register_effect(rainbow_cycle_effect);
 
   // Pulse
-  Pulse *pulse_effect = new Pulse(grid->select(0,0,8,9), 20, Effect::color(255,255,0));
+  Pulse *pulse_effect = new Pulse(grid->select(0,0,12,12), 20, Effect::color(128,0,0));
   controller->register_effect(pulse_effect);
 
   // Debug:
